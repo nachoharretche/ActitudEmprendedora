@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Entretenimiento</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/toastr.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/coming-soon.min.css" rel="stylesheet">
+
+  </head>
+
+  <body style="background-color: aqua">
+
+    <div class="overlay"></div>
+    
+    
+    <main class="main">
+
+      <section class="left section">
+          <div class="masthead">
+              <div class="masthead-bg"></div>
+              <div class="container h-100">
+                <div class="row h-100">
+                  <div class="col-12 my-auto">
+                    <div class="masthead-content text-white py-5 py-md-0">
+                      <h1 class="mb-3" style="padding-top: 20% ; padding-bottom: 10%">Entretenimientos!</h1>
+                      <p class="mb-5" style="padding-bottom: 10%">Estamos trabajando para terminar de desarrollar la aplicación. <br>
+                        Pero mientras nos podés ayudar suscribiéndote a nuestro mailing personalizado de eventos. <br>
+                        De esta forma estarás al tanto de todos los eventos de tu interés vía email hasta que 
+                        nuestra aplicación esté terminada !! 
+                      </p>
+                      <div class="input-group input-group-newsletter">
+                        <input type="email" id="email" class="form-control col-md-8 col-xs-8 col-sm-6" placeholder="Ingresa tu email..." aria-label="Enter email..." aria-describedby="basic-addon">
+                        
+                        <br>
+                      </div>
+                      <br><textarea style="resize: none;" class="form-control col-md-8 col-xs-8 col-sm-6" id="categories" rows="5" placeholder="Ingresa categorías de tu interés..." aria-describedby="basic-addon"></textarea>
+                      <br>
+                      <div class="input-group-append" style="padding-bottom: 20%">
+                          <button class="btn btn-secondary" onclick="suscribe()" type="button">Suscribirse</button>
+                        </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+      </section>
+
+      <!--<section class="right section">
+        <video style="max-width:100%; height:auto" playsinline="playsinline" autoplay="autoplay" muted="off" loop="loop">
+          <source src="mp4/bg.mp4" type="video/mp4">
+        </video>  
+      </section>
+    -->
+    </main>
+
+    <!--
+    <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/o3K9ilUDUzo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  -->
+          
+
+
+      
+
+        <!--
+<div class="" style="position: static!important;
+    right: 50%!important;">
+      <video style="max-width:100%; height:auto!important;" playsinline="playsinline" autoplay="autoplay" muted="sound" loop="loop" class="col ml-auto">
+        <source src="mp4/bg.mp4" type="video/mp4">
+      </video>  
+    </div>
+
+        -->
+
+  
+  
+
+    
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/coming-soon.min.js"></script>
+    <script src="js/toastr.js"></script>
+    <script>
+
+      function success(){
+        toastr.success('Muchas gracias por suscribirse', 'Suscripción exitosa');
+      }
+
+      function error(error){
+        toastr.error('Ocurrió un error. Por favor intente más tarde', 'Error');
+      }
+
+        function suscribe(){
+          var email = $("#email").val();
+          var categories = $("#categories").val();
+          var info = {"Email": email, "Categories": categories};
+
+          $.ajax({
+            type: "POST",
+            url: "https://entretenimientosapi.azurewebsites.net/api/Subscribes",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(info),
+            success: success,
+            error: error
+          });
+        }
+
+    </script>
+
+  </body>
+
+</html>
